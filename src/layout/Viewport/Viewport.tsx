@@ -1,27 +1,32 @@
 import React from "react";
 import { Layout } from "antd";
-
+import logo from "../../assets/images/logo.png";
 import {
   SideNav,
   ContentLayout,
-  AppHeader,
   CenterCard,
   PlaceholderDiv,
   LogoWrapper,
   LogoContainer,
-  LogoDescription,
+  MenuIcon,
 } from "./Viewport.styled";
 import UserMenu from "../../components/UserMenu/UserMenu";
+import SideNavMenu from "../../components/SideNavMenu/SideNavMenu";
+import AppHeader from "../../components/AppHeader/AppHeader";
 
 const Viewport: React.FC = () => {
   return (
     <Layout hasSider>
       <SideNav width={250}>
         <LogoWrapper>
-          <LogoContainer>QDB</LogoContainer>
-          <LogoDescription>Qatar Development Bank</LogoDescription>
+          <LogoContainer
+            style={{ backgroundImage: `url(${logo})` }}
+          ></LogoContainer>
+
+          <MenuIcon />
         </LogoWrapper>
         <UserMenu />
+        <SideNavMenu />
       </SideNav>
       <ContentLayout>
         <AppHeader />

@@ -1,7 +1,8 @@
+import { MenuOutlined } from "@ant-design/icons";
 import { Layout } from "antd";
 import { styled } from "styled-components";
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 export const SideNav = styled(Sider)`
   overflow: auto;
@@ -20,12 +21,6 @@ export const ContentLayout = styled(Layout)`
   height: 100vh;
 `;
 
-export const AppHeader = styled(Header)`
-  padding: 0px;
-  background-color: #f6fbff;
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
-  z-index: 999;
-`;
 export const CenterCard = styled(Content)`
   padding: 24px;
   background-color: #eff4f8;
@@ -41,16 +36,22 @@ export const PlaceholderDiv = styled.div`
 
 export const LogoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 8px;
+  align-items: center;
+  padding: 8px 16px;
   background: #397bf6;
   color: #fff;
+  width: 250px;
+  height: 64px;
+  justify-content: space-between;
 `;
+
 export const LogoContainer = styled.div`
-  font-size: 34px;
-  letter-spacing: 9px;
+  width: 100px;
+  height: 50px;
+  background-size: 100%;
 `;
-export const LogoDescription = styled.div`
-  font-size: 8px;
+export const MenuIcon = styled(MenuOutlined)`
+  font-size: 24px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 `;

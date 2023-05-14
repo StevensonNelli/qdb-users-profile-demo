@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 
 export const UserMenuWrapper = styled.div`
   padding-top: 16px;
+  text-align: center;
 `;
 
 export const HelloText = styled.div`
@@ -10,7 +11,9 @@ export const HelloText = styled.div`
   color: #adacac;
 `;
 
-export const SwitchUserField = styled(Select)``;
+export const SwitchUserField = styled(Select)`
+  width: 120px;
+`;
 
 export const LiveMetricsButton = styled(Button)`
   margin-top: 16px;
