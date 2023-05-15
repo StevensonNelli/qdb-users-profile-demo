@@ -1,11 +1,11 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
+
 import logo from "../../assets/images/logo.png";
 import {
   SideNav,
   ContentLayout,
-  CenterCard,
-  PlaceholderDiv,
   LogoWrapper,
   LogoContainer,
   MenuIcon,
@@ -45,7 +45,7 @@ const Viewport: React.FC = () => {
       </SideNav>
       <ContentLayout>
         <AppHeader userDetails={userDetails} />
-        <CenterCard>
+        {/* <CenterCard>
           <PlaceholderDiv>
             <p>long CenterCard</p>
             {
@@ -58,7 +58,8 @@ const Viewport: React.FC = () => {
               ))
             }
           </PlaceholderDiv>
-        </CenterCard>
+        </CenterCard> */}
+        <Outlet />
       </ContentLayout>
     </Layout>
   );

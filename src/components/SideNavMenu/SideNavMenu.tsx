@@ -10,6 +10,7 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { NavMenu } from "./SideNavMenu.styled";
+import { Link } from "react-router-dom";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -35,7 +36,7 @@ const items: MenuProps["items"] = [
     "dashboards",
     null,
     [
-      getItem("Overview", "overview", <FundViewOutlined />),
+      getItem(<Link to={""}>Overview</Link>, "overview", <FundViewOutlined />),
       getItem("Calender", "calender", <CalendarOutlined />),
       getItem("Schedule Actions", "schedule-actions", <FieldTimeOutlined />),
       getItem("Live Alerts", "live-alerts", <NotificationOutlined />),
@@ -48,7 +49,7 @@ const items: MenuProps["items"] = [
     "blogs",
     null,
     [
-      getItem("All", "all", <MessageOutlined />),
+      getItem(<Link to={"blogs"}>All</Link>, "all", <MessageOutlined />),
       getItem("Latest", "latest", <InfoCircleOutlined />),
       getItem("Archived", "archived", <WalletOutlined />),
     ],
@@ -81,8 +82,8 @@ const SideNavMenu: React.FC = () => {
   return (
     <NavMenu
       onClick={onClick}
-      defaultSelectedKeys={["all"]}
-      defaultOpenKeys={["blogs"]}
+      defaultSelectedKeys={["overview"]}
+      defaultOpenKeys={["overview"]}
       mode="inline"
       items={items}
     />
