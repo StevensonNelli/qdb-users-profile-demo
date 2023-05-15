@@ -21,13 +21,6 @@ export const ContentLayout = styled(Layout)`
   height: 100vh;
 `;
 
-export const CenterCard = styled(Content)`
-  padding: 24px;
-  background-color: #eff4f8;
-  overflow-y: scroll;
-  height: calc(100% - 64px);
-`;
-
 export const PlaceholderDiv = styled.div`
   padding: 24px;
   text-align: center;
