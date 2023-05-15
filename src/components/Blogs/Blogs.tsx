@@ -3,7 +3,7 @@ import BlogListItem from "../BlogListItem/BlogListItem";
 import apiClient from "../../api/http-common";
 import { Post } from "../../types/Post";
 import { UserDetailsContext } from "../../contexts/UserDetailsContext";
-import { Pagination, PaginationProps } from "antd";
+import { Pagination, PaginationProps, Row } from "antd";
 import { CenterCard } from "./Blogs.styled";
 
 const Blogs: React.FC = () => {
@@ -41,12 +41,14 @@ const Blogs: React.FC = () => {
         posts.map((post: Post) => {
           return <BlogListItem key={post.id} {...post} />;
         })}
-      <Pagination
-        pageSize={PAGE_SIZE}
-        current={current}
-        onChange={onChange}
-        total={TOTAL_PAGES}
-      />
+      <Row justify="center">
+        <Pagination
+          pageSize={PAGE_SIZE}
+          current={current}
+          onChange={onChange}
+          total={TOTAL_PAGES}
+        />
+      </Row>
     </CenterCard>
   );
 };
