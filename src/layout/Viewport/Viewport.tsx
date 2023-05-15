@@ -59,7 +59,9 @@ const Viewport: React.FC = () => {
             }
           </PlaceholderDiv>
         </CenterCard> */}
-        <Outlet />
+        <Layout.Content style={{ padding: 24 }}>
+          <Outlet />
+        </Layout.Content>
       </ContentLayout>
     </Layout>
   );
