@@ -41,7 +41,7 @@ const Viewport: React.FC = () => {
 
           <MenuIcon />
         </LogoWrapper>
-        <UserMenu users={users} />
+        <UserMenu users={users} setUserDetails={setUserDetails} />
         <SideNavMenu />
       </SideNav>
       <ContentLayout>

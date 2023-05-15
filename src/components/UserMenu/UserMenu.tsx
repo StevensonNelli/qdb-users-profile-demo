@@ -12,9 +12,10 @@ import { getRandomNum, userPics } from "../../helpers/util-methods";
 
 interface UserMenuProps {
   users: User[] | [];
+  setUserDetails: (value: any) => void;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({ users }) => {
+const UserMenu: React.FC<UserMenuProps> = ({ users, setUserDetails }) => {
   const [userId, setUserId] = React.useState(() => getRandomNum());
   const [currentUser, setCurrentUser] = React.useState<User | null>(null);
 
@@ -23,10 +24,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ users }) => {
       users.some((user) => {
         if (user.id === userId) {
           setCurrentUser(user);
+          setUserDetails(user);
         }
         return user.id === userId;
       });
-  }, [users, userId]);
+  }, [users, userId, setUserDetails]);
 
   const onUserChange = (value: any) => {
     setUserId(value);
