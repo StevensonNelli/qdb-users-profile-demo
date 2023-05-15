@@ -19,10 +19,9 @@ import { User } from "../../types/User";
 const Viewport: React.FC = () => {
   const [userDetails, setUserDetails] = React.useState<User | null>(null);
   const [users, setUsers] = React.useState<User[] | []>([]);
-
   async function callUsers() {
     await apiClient
-      .get(`https://jsonplaceholder.typicode.com/users`)
+      .get(`${process.env.REACT_APP_BASE_URL}/users`)
       .then((res) => setUsers(res.data))
       .catch((err) => console.log(err));
   }
