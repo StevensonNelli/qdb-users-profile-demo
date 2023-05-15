@@ -12,7 +12,7 @@ export const HelloText = styled.div`
 `;
 
 export const SwitchUserField = styled(Select)`
-  width: 120px;
+  width: 170px;
 `;
 
 export const LiveMetricsButton = styled(Button)`

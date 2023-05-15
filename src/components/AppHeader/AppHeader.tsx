@@ -11,8 +11,15 @@ import {
   PlusOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
+import { User } from "../../types/User";
+import { userPics } from "../../helpers/util-methods";
 
-const AppHeader: React.FC = () => {
+interface UserMenuProps {
+  userDetails: User | null;
+}
+
+const AppHeader: React.FC<UserMenuProps> = ({ userDetails }) => {
+  const userPic = userPics(userDetails?.id ?? 1);
   return (
     <AppHeaderWrapper>
       <Input
@@ -28,7 +35,7 @@ const AppHeader: React.FC = () => {
         <Avatar
           size={"default"}
           style={{ backgroundColor: "#ccc" }}
-          src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2"
+          src={userPic}
         />
       </HeaderActionsContainer>
     </AppHeaderWrapper>

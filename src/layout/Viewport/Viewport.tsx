@@ -13,8 +13,24 @@ import {
 import UserMenu from "../../components/UserMenu/UserMenu";
 import SideNavMenu from "../../components/SideNavMenu/SideNavMenu";
 import AppHeader from "../../components/AppHeader/AppHeader";
+import apiClient from "../../api/http-common";
+import { User } from "../../types/User";
 
 const Viewport: React.FC = () => {
+  const [userDetails, setUserDetails] = React.useState<User | null>(null);
+  const [users, setUsers] = React.useState<User[] | []>([]);
+
+  async function callUsers() {
+    await apiClient
+      .get(`https://jsonplaceholder.typicode.com/users`)
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err));
+  }
+
+  React.useEffect(() => {
+    callUsers();
+  }, []);
+
   return (
     <Layout hasSider>
       <SideNav width={250}>
@@ -25,11 +41,11 @@ const Viewport: React.FC = () => {
 
           <MenuIcon />
         </LogoWrapper>
-        <UserMenu />
+        <UserMenu users={users} />
         <SideNavMenu />
       </SideNav>
       <ContentLayout>
-        <AppHeader />
+        <AppHeader userDetails={userDetails} />
         <CenterCard>
           <PlaceholderDiv>
             <p>long CenterCard</p>
