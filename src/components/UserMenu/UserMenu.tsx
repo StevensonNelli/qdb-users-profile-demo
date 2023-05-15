@@ -9,32 +9,31 @@ import {
 } from "./UserMenu.styled";
 import { User } from "../../types/User";
 import { getRandomNum, userPics } from "../../helpers/util-methods";
+import { UserDetailsContext } from "../../contexts/UserDetailsContext";
 
 interface UserMenuProps {
   users: User[] | [];
-  setUserDetails: (value: any) => void;
 }
 
-const UserMenu: React.FC<UserMenuProps> = ({ users, setUserDetails }) => {
+const UserMenu: React.FC<UserMenuProps> = ({ users }) => {
   const [userId, setUserId] = React.useState(() => getRandomNum());
-  const [currentUser, setCurrentUser] = React.useState<User | null>(null);
+  const { user, updateUser } = React.useContext(UserDetailsContext);
 
   React.useEffect(() => {
     users &&
       users.some((user) => {
         if (user.id === userId) {
-          setCurrentUser(user);
-          setUserDetails(user);
+          updateUser(user);
         }
         return user.id === userId;
       });
-  }, [users, userId, setUserDetails]);
+  }, [users, userId, updateUser]);
 
   const onUserChange = (value: any) => {
     setUserId(value);
   };
 
-  if (!currentUser) {
+  if (!user) {
     return (
       <div
         style={{
@@ -54,11 +53,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ users, setUserDetails }) => {
       <Avatar
         size={64}
         style={{ backgroundColor: "#ccc" }}
-        src={userPics(currentUser.id)}
+        src={userPics(user.id)}
       />
       <HelloText>Hello</HelloText>
       <SwitchUserField
-        value={currentUser?.name ?? ""}
+        value={user?.name ?? ""}
         bordered={false}
         options={users}
         fieldNames={{ label: "name", value: "id" }}

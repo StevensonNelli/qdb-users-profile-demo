@@ -1,28 +1,30 @@
 import React from "react";
 import BlogListItem from "../BlogListItem/BlogListItem";
-
-const posts = [
-  {
-    userId: 1,
-    id: 1,
-    title:
-      "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-    body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-  },
-  {
-    userId: 1,
-    id: 2,
-    title: "qui est esse",
-    body: "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla",
-  },
-];
+import apiClient from "../../api/http-common";
+import { Post } from "../../types/Post";
+import { UserDetailsContext } from "../../contexts/UserDetailsContext";
 
 const Blogs: React.FC = () => {
+  const [posts, setPosts] = React.useState<Post[] | null>(null);
+  const { user } = React.useContext(UserDetailsContext);
+
+  async function callPosts() {
+    await apiClient
+      .get(`${process.env.REACT_APP_BASE_URL}/users/${user?.id}/posts`)
+      .then((res) => setPosts(res.data))
+      .catch((err) => console.log(err));
+  }
+
+  React.useEffect(() => {
+    callPosts();
+  }, []);
+
   return (
     <div>
-      {posts.map((post) => {
-        return <BlogListItem key={post.id} {...post} />;
-      })}
+      {posts &&
+        posts.map((post: Post) => {
+          return <BlogListItem key={post.id} {...post} />;
+        })}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Blogs from "./components/Blogs/Blogs";
 import DashboardOverview from "./components/DashboardOverview/DashboardOverview";
 import Viewport from "./layout/Viewport/Viewport";
+import UserDetailsContextProvider from "./contexts/UserDetailsContext";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <UserDetailsContextProvider>
+        <RouterProvider router={router} />
+      </UserDetailsContextProvider>
     </div>
   );
 }

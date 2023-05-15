@@ -17,8 +17,8 @@ import apiClient from "../../api/http-common";
 import { User } from "../../types/User";
 
 const Viewport: React.FC = () => {
-  const [userDetails, setUserDetails] = React.useState<User | null>(null);
   const [users, setUsers] = React.useState<User[] | []>([]);
+
   async function callUsers() {
     await apiClient
       .get(`${process.env.REACT_APP_BASE_URL}/users`)
@@ -40,11 +40,11 @@ const Viewport: React.FC = () => {
 
           <MenuIcon />
         </LogoWrapper>
-        <UserMenu users={users} setUserDetails={setUserDetails} />
+        <UserMenu users={users} />
         <SideNavMenu />
       </SideNav>
       <ContentLayout>
-        <AppHeader userDetails={userDetails} />
+        <AppHeader />
         {/* <CenterCard>
           <PlaceholderDiv>
             <p>long CenterCard</p>

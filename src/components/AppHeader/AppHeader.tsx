@@ -11,15 +11,12 @@ import {
   PlusOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import { User } from "../../types/User";
 import { userPics } from "../../helpers/util-methods";
+import { UserDetailsContext } from "../../contexts/UserDetailsContext";
 
-interface UserMenuProps {
-  userDetails: User | null;
-}
-
-const AppHeader: React.FC<UserMenuProps> = ({ userDetails }) => {
-  const userPic = userPics(userDetails?.id ?? 1);
+const AppHeader: React.FC = () => {
+  const { user } = React.useContext(UserDetailsContext);
+  const userPic = userPics(user?.id ?? 1);
   return (
     <AppHeaderWrapper>
       <Input
