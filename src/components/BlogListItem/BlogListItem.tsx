@@ -1,6 +1,7 @@
 import { Col, Image, Row, Typography } from "antd";
 import React from "react";
 import { ReadMoreButton } from "./BlogListItem.styled";
+import { blogPics, getRandomNum } from "../../helpers/util-methods";
 
 interface BlogListItemProps {
   id: number;
@@ -24,7 +25,12 @@ const BlogListItem: React.FC<BlogListItemProps> = ({ id, title, body }) => {
       }}
     >
       <Col flex="0 0 200px">
-        <Image height={150} width={200} src="/fdfd" fallback={FALLBACK_IMAGE} />
+        <Image
+          height={150}
+          width={200}
+          src={blogPics(getRandomNum())}
+          fallback={FALLBACK_IMAGE}
+        />
       </Col>
       <Col flex="1">
         <Row>
